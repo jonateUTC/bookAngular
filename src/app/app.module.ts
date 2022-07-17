@@ -14,9 +14,11 @@ import { PopupComponent } from './popup/popup.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PopupeditComponent } from './popupedit/popupedit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, PopupComponent],
+  declarations: [AppComponent, PopupComponent, PopupeditComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -30,8 +32,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    FormsModule,
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
+  entryComponents: [PopupeditComponent],
 })
 export class AppModule {}

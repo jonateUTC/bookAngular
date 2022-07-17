@@ -8,15 +8,24 @@ export interface Bookregister {
   price?: number | null;
 }
 export interface Booklinks {
-  first?: string,
-  previous?: string,
-  next?: string,
-  last?: string
+  first?: string;
+  previous?: string;
+  next?: string;
+  last?: string;
 }
 export interface Bookmeta {
-  currentPage?: number,
-  itemCount?: number,
-  itemsPerPage?: number,
-  totalItems?: number,
-  totalPages?: number
+  currentPage?: number;
+  itemCount?: number;
+  itemsPerPage?: number;
+  totalItems?: number;
+  totalPages?: number;
+}
+export interface Bookedit {
+  id?: number | null;
+  name?: string | null;
+  description?: string | null;
+  autor?: string | null;
+  date?: Date | null;
+  number?: number | null;
+  price?: number | null;
 }

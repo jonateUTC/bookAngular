@@ -42,6 +42,7 @@ export class PopupComponent implements OnInit {
     this.api.createbook(book).subscribe((book) => {
       this.datasaved = true;
       location.reload();
+      alert('Registro guardado con éxito');
       this.getsoftBooks();
     });
   }
@@ -61,7 +62,7 @@ export class PopupComponent implements OnInit {
   }
 
   open() {
-    this.modalService
+    const modalRef = this.modalService
       .open(this.addview, { ariaLabelledBy: 'modal-basic-title', size: 'lg' })
       .result.then(
         (result) => {},

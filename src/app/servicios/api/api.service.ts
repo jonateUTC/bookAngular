@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BookI } from '../../modelos/book.interface';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Bookregister } from 'src/app/modelos/book.register';
+import { Bookedit, Bookregister } from 'src/app/modelos/book.register';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +16,16 @@ export class ApiService {
     let options = {
       headers: httpheaders,
     };
-    console.log(book);
     let direction = this.bookUrl + 'bookcreate';
     return this.http.post<Bookregister>(direction, book, options);
+  }
+  editbook(book: Bookedit): Observable<Bookedit> {
+    let httpheaders = new HttpHeaders().set('Content-type', 'application/Json');
+    let options = {
+      headers: httpheaders,
+    };
+    let direction = this.bookUrl + 'booksupdate/' + book.id;
+    return this.http.post<Bookedit>(direction, book, options);
   }
 
   getAllBook(page: number, sortBy: string, size: number): Observable<any> {

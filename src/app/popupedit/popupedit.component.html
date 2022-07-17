@@ -1,0 +1,149 @@
+<div>
+  <div class="modal-header header-color">
+    <h4 class="modal-title" id="modal-basic-title">Actualizar Libro</h4>
+    <button
+      type="button"
+      class="btn-close btn-close-white"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <p *ngIf="datasaved" ngClass="success">Registro Actualizado con éxito</p>
+      <br />
+      <form
+        [formGroup]="bookForm"
+        (ngSubmit)="onFormSubmit()"
+        style="padding: 10px"
+      >
+        <div class="mb-3">
+          <div class="form-group" style="display: none">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>ID</mat-label>
+              <input
+                matInput
+                placeholder="ID Libro"
+                name="id"
+                formControlName="id"
+                [(ngModel)]="book.id"
+                readonly="readonly"
+              />
+            </mat-form-field>
+          </div>
+          <br />
+          <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                placeholder="Nombre Libro"
+                name="namebook"
+                maxlength="150"
+                formControlName="namebook"
+                [(ngModel)]="book.namebook"
+              />
+            </mat-form-field>
+          </div>
+          <br />
+          <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Descripción</mat-label>
+              <input
+                matInput
+                placeholder="Descripción Libro"
+                name="descriptionbook"
+                maxlength="300"
+                formControlName="descriptionbook"
+                [(ngModel)]="book.descriptionbook"
+              />
+            </mat-form-field>
+          </div>
+          <br />
+          <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Autor</mat-label>
+              <input
+                matInput
+                placeholder="Autor Libro"
+                name="authorbook"
+                maxlength="150"
+                formControlName="authorbook"
+                [(ngModel)]="book.authorbook"
+              />
+            </mat-form-field>
+          </div>
+          <br />
+          <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Fecha Publicación</mat-label>
+              <input
+                matInput
+                type="date"
+                name="datepublishbook"
+                style="z-index: 2000 !important"
+                formControlName="datepublishbook"
+                [ngModel]="book.datepublishbook | date: 'yyyy-MM-dd'"
+                (ngModelChange)="book.datepublishbook = $event"
+              />
+            </mat-form-field>
+          </div>
+          <br />
+          <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Número de Ejemplares</mat-label>
+              <input
+                matInput
+                placeholder="Numero Ejemplares Libro"
+                name="numberbook"
+                type="number"
+                formControlName="numberbook"
+                [(ngModel)]="book.numberbook"
+              />
+            </mat-form-field>
+          </div>
+          <br />
+          <div class="form-group">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Costo</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="Costo Libro"
+                name="pricebook"
+                ng-model="myDecimal | number : 4"
+                ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                step="0.0001"
+                formControlName="pricebook"
+                [(ngModel)]="book.pricebook"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <button
+              [disabled]="bookForm.invalid"
+              type="submit"
+              name="name"
+              mat-raised-button
+              color="primary"
+            >
+              Actualizar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer header-color">
+      <button
+        type="button"
+        style="display: none"
+        class="btn btn-outline-dark"
+        (click)="activeModal.dismiss('Cross click')"
+      >
+        Actualizar
+      </button>
+    </div>
+  </div>
+</div>

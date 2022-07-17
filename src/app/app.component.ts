@@ -1,10 +1,24 @@
 import { DecimalPipe } from '@angular/common';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs';
 import { BookI } from './modelos/book.interface';
-import { Booklinks, Bookmeta, Bookregister } from './modelos/book.register';
+import {
+  Bookedit,
+  Booklinks,
+  Bookmeta,
+  Bookregister,
+} from './modelos/book.register';
+import { PopupeditComponent } from './popupedit/popupedit.component';
 import { ApiService } from './servicios/api/api.service';
 
 @Component({
@@ -14,7 +28,7 @@ import { ApiService } from './servicios/api/api.service';
 })
 export class AppComponent implements OnInit {
   title = 'Libros';
-  bookwrite: Bookregister[] = [];
+  bookwrite: Bookedit[] = [];
   booklink: Booklinks[] = [];
   bookmeta: Bookmeta[] = [];
   dataSource: BookI[] = [];
@@ -29,7 +43,7 @@ export class AppComponent implements OnInit {
   ];
   pageEvent: PageEvent | undefined;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private modalService: NgbModal) {}
   ngOnInit(): void {
     this.initDataSource();
   }
@@ -65,8 +79,16 @@ export class AppComponent implements OnInit {
       console.log(this.bookmeta);
     });
   }
-  clickAddTodo(id: any) {
-    alert('hola!' + id);
+  clickAddTodo(book: Bookedit) {
+    const modalRef = this.modalService.open(PopupeditComponent, {
+      ariaLabelledBy: 'modal-basic-title',
+      size: 'lg',
+    });
+    modalRef.componentInstance.book = book;
+    modalRef.result.then((result) => {});
+  }
+  onFormSubmit() {
+    alert('prueba');
   }
   getsoftBooks() {
     this.api.getAllBook(0, 'id', 5).subscribe((data) => {
