@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
 
+##  Create project dependencies
+
+Run the command `npm install` for a dev server. The application will download all the dependencies used in the project.
+
+##  Configure spring rest api
+
+Change the connection link to the api found in the path src\app\services\api\api.service.ts
+```shell
+bookUrl = 'http://localhost:8290/api/' for example;
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
