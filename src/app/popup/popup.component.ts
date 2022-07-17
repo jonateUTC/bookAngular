@@ -47,7 +47,7 @@ export class PopupComponent implements OnInit {
     });
   }
   getsoftBooks() {
-    this.api.getAllBook(0, 'id', 5).subscribe((data) => {
+    this.api.getAllBook(0, 'id', 5, 'asc').subscribe((data) => {
       this.bookmeta = [
         {
           currentPage: data['number'],

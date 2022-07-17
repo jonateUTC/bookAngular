@@ -25,14 +25,20 @@ export class ApiService {
       headers: httpheaders,
     };
     let direction = this.bookUrl + 'booksupdate/' + book.id;
-    return this.http.post<Bookedit>(direction, book, options);
+    return this.http.put<Bookedit>(direction, book, options);
   }
 
-  getAllBook(page: number, sortBy: string, size: number): Observable<any> {
+  getAllBook(
+    page: number,
+    sortBy: string,
+    size: number,
+    sorttype: string
+  ): Observable<any> {
     let params = new HttpParams();
     params = params.append('page', String(page));
     if (sortBy != '') {
       params = params.append('sortBy', String(sortBy));
+      params = params.append('sorttype', String(sorttype));
     }
     params = params.append('size', String(size));
     let direction = this.bookUrl + 'books';

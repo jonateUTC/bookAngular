@@ -7,29 +7,91 @@
           <table mat-table [dataSource]="dataSource">
             <!-- Name Column -->
             <ng-container matColumnDef="namebook">
-              <th mat-header-cell *matHeaderCellDef>Nombre</th>
-              <td mat-cell *matCellDef="let element">{{ element.namebook }}</td>
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                (click)="filter('namebook')"
+              >
+                Nombre
+                <mat-icon *ngIf="nsort == 'asc'" class="icon-display"
+                  >arrow_downward</mat-icon
+                >
+                <mat-icon *ngIf="nsort == 'desc'" class="icon-display"
+                  >arrow_upward</mat-icon
+                >
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                style="width: 15%; text-align: justify"
+              >
+                {{ element.namebook }}
+              </td>
             </ng-container>
 
             <!-- Description Column -->
             <ng-container matColumnDef="descriptionbook">
-              <th mat-header-cell *matHeaderCellDef>Descripción</th>
-              <td mat-cell *matCellDef="let element">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                (click)="filter('descriptionbook')"
+              >
+                Descripción
+                <mat-icon *ngIf="dsort == 'asc'" class="icon-display"
+                  >arrow_downward</mat-icon
+                >
+                <mat-icon *ngIf="dsort == 'desc'" class="icon-display"
+                  >arrow_upward</mat-icon
+                >
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                style="width: 30%; text-align: justify"
+              >
                 {{ element.descriptionbook }}
               </td>
             </ng-container>
 
             <!-- Autor Column -->
             <ng-container matColumnDef="authorbook">
-              <th mat-header-cell *matHeaderCellDef>Autor</th>
-              <td mat-cell *matCellDef="let element">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                (click)="filter('authorbook')"
+              >
+                Autor
+                <mat-icon *ngIf="asort == 'asc'" class="icon-display"
+                  >arrow_downward</mat-icon
+                >
+                <mat-icon *ngIf="asort == 'desc'" class="icon-display"
+                  >arrow_upward</mat-icon
+                >
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                style="width: 15%; text-align: justify"
+              >
                 {{ element.authorbook }}
               </td>
             </ng-container>
 
             <!-- Fecha Publicacion Column -->
             <ng-container matColumnDef="datepublishbook">
-              <th mat-header-cell *matHeaderCellDef>Fecha Publicación</th>
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                (click)="filter('datepublishbook')"
+              >
+                Fecha Publicación
+                <mat-icon *ngIf="dasort == 'asc'" class="icon-display"
+                  >arrow_downward</mat-icon
+                >
+                <mat-icon *ngIf="dasort == 'desc'" class="icon-display"
+                  >arrow_upward</mat-icon
+                >
+              </th>
               <td mat-cell *matCellDef="let element">
                 {{ element.datepublishbook | date: "yyyy-MM-dd" }}
               </td>
@@ -37,7 +99,19 @@
 
             <!-- number Column -->
             <ng-container matColumnDef="numberbook">
-              <th mat-header-cell *matHeaderCellDef>N° Ejemplares</th>
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                (click)="filter('numberbook')"
+              >
+                N° Ejemplares
+                <mat-icon *ngIf="nusort == 'asc'" class="icon-display"
+                  >arrow_downward</mat-icon
+                >
+                <mat-icon *ngIf="nusort == 'desc'" class="icon-display"
+                  >arrow_upward</mat-icon
+                >
+              </th>
               <td mat-cell *matCellDef="let element">
                 {{ element.numberbook }}
               </td>
@@ -45,7 +119,19 @@
 
             <!-- Costo Column -->
             <ng-container matColumnDef="pricebook">
-              <th mat-header-cell *matHeaderCellDef>Costo</th>
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                (click)="filter('pricebook')"
+              >
+                Costo
+                <mat-icon *ngIf="psort == 'asc'" class="icon-display"
+                  >arrow_downward</mat-icon
+                >
+                <mat-icon *ngIf="psort == 'desc'" class="icon-display"
+                  >arrow_upward</mat-icon
+                >
+              </th>
               <td mat-cell *matCellDef="let element">
                 {{ element.pricebook }}
               </td>
